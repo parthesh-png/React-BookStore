@@ -1,18 +1,17 @@
-# 📚 BookShelf — Book Management System
+ BookMedia — Book Management System
 
 A full-featured React Book Management System built for a developer evaluation assignment.
 
-## 🚀 Getting Started
+ Getting Started
 
-```bash
+bash
 npm install
 npm start
-```
-Opens at `http://localhost:3000`
+
+
 
 ---
-
-## 📁 Project Structure
+Project Structure
 
 ```
 src/
@@ -85,27 +84,5 @@ src/
 
 ---
 
-## 🔌 Swapping in a Real API
 
-All API logic lives in `src/services/bookService.js`. Replace the mock methods with real `fetch()` calls:
-
-```js
-// Example: replace fetchBooks
-export const fetchBooks = async () => {
-  const res = await fetch('https://your-api.com/books');
-  if (!res.ok) throw new Error('Failed to fetch');
-  return res.json();
-};
-```
-
-The hooks and components need zero changes.
-
----
-
-## 🛠 Tech Stack
-
-- **React 18** with functional components and hooks
-- **Custom hooks** for separation of concerns
-- **CSS Modules** (per-component CSS files)
-- **No external UI library** — fully custom design
-- **localStorage** mock API (drop-in replaceable)
+-
