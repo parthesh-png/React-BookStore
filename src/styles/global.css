@@ -1,0 +1,136 @@
+/* styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #0d0f14;
+  --surface:      #13161e;
+  --surface2:     #1a1e28;
+  --surface3:     #21263380;
+  --border:       #2a2f3f;
+  --border2:      #353b50;
+  --accent:       #e8c47a;
+  --accent2:      #c9a85c;
+  --accent-dim:   #e8c47a18;
+  --text:         #eef0f6;
+  --text2:        #8b91a8;
+  --text3:        #555e78;
+  --danger:       #e06b6b;
+  --danger-dim:   #e06b6b15;
+  --success:      #6bbf8e;
+  --info:         #6b9fe0;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --radius:    10px;
+  --radius-lg: 16px;
+  --shadow:    0 4px 24px #00000040;
+  --shadow-lg: 0 8px 40px #00000060;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+/* App layout */
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.main { flex: 1; max-width: 1280px; margin: 0 auto; width: 100%; padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+
+/* ── Shared Button styles ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px; border-radius: var(--radius); border: none;
+  font-family: var(--font-body); font-size: 0.875rem; font-weight: 500;
+  cursor: pointer; transition: all var(--transition); white-space: nowrap;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: var(--bg); font-weight: 600;
+}
+.btn--primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-dim); filter: brightness(1.08); }
+
+.btn--ghost { background: transparent; border: 1px solid var(--border2); color: var(--text2); }
+.btn--ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.btn--danger { background: var(--danger-dim); color: var(--danger); border: 1px solid #e06b6b22; }
+.btn--danger:hover:not(:disabled) { background: var(--danger-dim); filter: brightness(1.2); }
+
+.btn--danger-solid { background: var(--danger); color: white; border: none; }
+.btn--danger-solid:hover:not(:disabled) { filter: brightness(1.1); }
+
+.btn--icon { padding: 6px 8px; font-size: 0.85rem; }
+.btn--sm   { padding: 6px 10px; font-size: 0.8rem; }
+
+/* ── Shared form elements ──────────────────────────────────────────────────── */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group--full { grid-column: 1 / -1; }
+.form-label { font-size: 0.8rem; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+.form-label--optional { color: var(--text3); font-weight: 400; text-transform: none; letter-spacing: 0; }
+
+.form-input, .form-select, .form-textarea {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 12px; color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+  outline: none; width: 100%;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--text3); }
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.form-input--error { border-color: var(--danger) !important; box-shadow: 0 0 0 3px var(--danger-dim) !important; }
+.form-error { font-size: 0.76rem; color: var(--danger); }
+.form-select {
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238b91a8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 10px center;
+  padding-right: 32px;
+}
+.form-select option { background: var(--surface2); }
+.form-textarea { resize: vertical; min-height: 80px; }
+
+/* ── Genre badge (shared) ─────────────────────────────────────────────────── */
+.book-card__genre {
+  display: inline-block; padding: 2px 10px; border-radius: 20px;
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+}
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.spinner {
+  display: inline-block; width: 14px; height: 14px;
+  border: 2px solid currentColor; border-top-color: transparent;
+  border-radius: 50%; animation: spin 0.6s linear infinite;
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes fadeUp   { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
+@keyframes fadeIn   { from { opacity: 0 } to { opacity: 1 } }
+@keyframes slideUp  { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@keyframes slideLeft{ from { opacity: 0; transform: translateX(20px) } to { opacity: 1; transform: none } }
+@keyframes shimmer  { to { background-position: -200% 0 } }
+@keyframes spin     { to { transform: rotate(360deg) } }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .main { padding: 1rem; gap: 1rem; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-group--full { grid-column: 1; }
+}

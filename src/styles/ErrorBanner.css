@@ -1,0 +1,9 @@
+/* styles/ErrorBanner.css */
+.error-banner {
+  background: var(--danger-dim); border: 1px solid var(--danger);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+  display: flex; align-items: center; gap: 10px;
+  animation: fadeUp 0.3s ease;
+}
+.error-banner__icon { font-size: 1.1rem; flex-shrink: 0; }
+.error-banner__msg  { color: var(--danger); flex: 1; font-size: 0.9rem; }

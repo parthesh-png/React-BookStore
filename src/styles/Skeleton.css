@@ -1,0 +1,22 @@
+/* styles/Skeleton.css */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--surface2) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+.skeleton-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  overflow: hidden; animation: fadeUp 0.4s ease both;
+}
+.skeleton-card__body { padding: 1.25rem; display: flex; flex-direction: column; gap: 10px; min-height: 180px; }
+.skeleton-card__footer { display: flex; justify-content: space-between; align-items: center; }
+.skeleton-card__btns { display: flex; gap: 6px; }
+
+.skeleton--spine  { height: 4px; width: 100%; border-radius: 0; }
+.skeleton--badge  { height: 20px; width: 70px; border-radius: 20px; }
+.skeleton--title  { height: 24px; width: 80%; }
+.skeleton--author { height: 16px; width: 55%; }
+.skeleton--divider{ height: 1px; width: 100%; }
+.skeleton--tag    { height: 16px; width: 56px; }
+.skeleton--btn    { height: 30px; width: 32px; border-radius: 8px; }
